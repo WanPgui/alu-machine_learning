@@ -34,3 +34,4 @@ def cat_matrices(mat1, mat2, axis=0):
     else:
         # Unsupported axis
         return None
+    

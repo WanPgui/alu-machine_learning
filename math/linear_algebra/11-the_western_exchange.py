@@ -9,3 +9,4 @@ def np_transpose(matrix):
     Returns the transpose of a 2D matrix
     """
     return matrix.transpose()
+
