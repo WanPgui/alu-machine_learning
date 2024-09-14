@@ -1,19 +1,11 @@
 #!/usr/bin/env python3
 """
-Module to transpose a matrix using numpy.
+transpose an n x m matrix (2D list) and return the transposed matrix.
 """
-
-import numpy as np
 
 
 def np_transpose(matrix):
     """
-    Returns the transpose of a numpy ndarray.
-
-    Args:
-        matrix (numpy.ndarray): The matrix to transpose.
-
-    Returns:
-        numpy.ndarray: The transposed matrix.
+    Returns the transpose of a 2D matrix
     """
-    return np.transpose(matrix)
+    return matrix.transpose()

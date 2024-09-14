@@ -1,26 +1,16 @@
 #!/usr/bin/env python3
-"""
-Module to add two matrices.
-"""
+"""Perform n-dimensional matrix addition"""
+
 
 def add_matrices(mat1, mat2):
-    """
-    Adds two matrices element-wise.
-
-    Args:
-        mat1 (list): The first matrix.
-        mat2 (list): The second matrix.
-
-    Returns:
-        list: The resulting matrix after addition, or None if shapes do not match.
-    """
+    """Add mat1 and mat2 element-wise by dimension"""
     if len(mat1) != len(mat2):
         return None
-
-    result = []
-    for row1, row2 in zip(mat1, mat2):
-        if len(row1) != len(row2):
-            return None
-        result.append([x + y for x, y in zip(row1, row2)])
-    
-    return result
+    if isinstance(mat1[0], (float, int)) != isinstance(mat2[0], (float, int)):
+        return None
+    if isinstance(mat1[0], (float, int)):
+        return [x + y for x, y in zip(mat1, mat2)]
+    ret = [add_matrices(m1, m2) for m1, m2 in zip(mat1, mat2)]
+    if any(r is None for r in ret):
+        return None
+    return ret
