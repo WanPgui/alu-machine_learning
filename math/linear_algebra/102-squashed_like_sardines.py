@@ -1,37 +1,65 @@
 #!/usr/bin/env python3
 """
-Squashed Like Sardines
+Module to concatenate two matrices along a specific axis.
 """
 
 def cat_matrices(mat1, mat2, axis=0):
     """
-    Concatenates two matrices along a specific axis.
-    Returns None if the matrices cannot be concatenated.
+    Concatenates two matrices along a specified axis.
+
+    Args:
+        mat1 (list of list): The first matrix.
+        mat2 (list of list): The second matrix.
+        axis (int, optional): The axis along which to concatenate. Default is 0.
+
+    Returns:
+        list of list: The concatenated matrix, or None if concatenation fails.
     """
-    if axis == 0:
-        # Check if the number of columns is the same
-        if len(mat1[0]) != len(mat2[0]):
-            return None
-        # Concatenate rows
-        return mat1 + mat2
-    
-    elif axis == 1:
-        # Check if the number of rows is the same
-        if len(mat1) != len(mat2):
-            return None
-        # Concatenate columns
-        return [row1 + row2 for row1, row2 in zip(mat1, mat2)]
-    
-    elif axis == 2:
-        # Handling 3D matrices: concatenate along the third axis
-        if len(mat1) != len(mat2):
-            return None
-        if any(len(mat1[i]) != len(mat2[i]) for i in range(len(mat1))):
-            return None
-        return [[m1 + m2 for m1, m2 in zip(mat1_layer, mat2_layer)]
-                for mat1_layer, mat2_layer in zip(mat1, mat2)]
-    
-    else:
-        # Unsupported axis
+    if not isinstance(mat1, list) or not isinstance(mat2, list):
         return None
-    
+
+    def check_dimensions(matrix):
+        """
+        Checks the dimensions of a matrix.
+
+        Args:
+            matrix (list of list): The matrix to check.
+
+        Returns:
+            tuple: A tuple representing the shape of the matrix.
+        """
+        shape = []
+        while isinstance(matrix, list):
+            shape.append(len(matrix))
+            matrix = matrix[0] if matrix else []
+        return tuple(shape)
+
+    shape1 = check_dimensions(mat1)
+    shape2 = check_dimensions(mat2)
+
+    if shape1 == shape2:
+        def concatenate_along_axis(mat1, mat2, axis):
+            """
+            Concatenates two matrices along a specified axis.
+
+            Args:
+                mat1 (list of list): The first matrix.
+                mat2 (list of list): The second matrix.
+                axis (int): The axis along which to concatenate.
+
+            Returns:
+                list of list: The concatenated matrix.
+            """
+            if axis == 0:
+                return mat1 + mat2
+            elif axis == 1:
+                if len(mat1) != len(mat2):
+                    return None
+                return [row1 + row2 for row1, row2 in zip(mat1, mat2)]
+            else:
+                return None
+
+        return concatenate_along_axis(mat1, mat2, axis)
+
+    return None
+
