@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 def matrix_shape(matrix):
     shape = [len(matrix)]
     while isinstance(matrix[0], list):
