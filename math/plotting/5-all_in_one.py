@@ -25,47 +25,48 @@ y32 = np.exp((r3 / t32) * x3)
 np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
 
-fig, axs = plt.subplots(3, 2, figsize=(12, 12))
 
-axs[0, 0].plot(y0)
-axs[0, 0].set_xlabel('X')
-axs[0, 0].set_ylabel('Y')
-axs[0, 0].set_title('Plot 1')
-axs[0, 0].tick_params(axis='x', labelsize='x-small')
-axs[0, 0].tick_params(axis='y', labelsize='x-small')
+# make 3 x 2 grid 
+fig, axs = plt.subplots(3, 2, figsize=(10, 10))
+axs[0, 0].plot(y0, c='r')
+axs[0, 0].set_xlim(left=0, right=10)
+axs[0, 0].set_ylim(bottom=0, top=1000)
+axs[0, 0].set_title("y=x^3")
 
-axs[0, 1].scatter(x1, y1)
-axs[0, 1].set_xlabel('X')
-axs[0, 1].set_ylabel('Y')
-axs[0, 1].set_title('Plot 2')
-axs[0, 1].tick_params(axis='x', labelsize='x-small')
-axs[0, 1].tick_params(axis='y', labelsize='x-small')
+axs[0, 1].scatter(x1, y1, c='m')
 
 axs[1, 0].plot(x2, y2)
-axs[1, 0].set_xlabel('Time (years)')
-axs[1, 0].set_ylabel('Fraction Remaining')
-axs[1, 0].set_title('Plot 3')
-axs[1, 0].tick_params(axis='x', labelsize='x-small')
-axs[1, 0].tick_params(axis='y', labelsize='x-small')
+axs[1, 0].set_xlim(left=0, right=28650)
+axs[1, 0].set_ylim(bottom=0, top=1)
+axs[1, 0].set_title("Exponential Decay of C-14")
+axs[1, 0].yscale('log')
 
-axs[1, 1].plot(x3, y31, color='r', linestyle='--', label='C-14')
-axs[1, 1].plot(x3, y32, color='g', label='Ra-226')
-axs[1, 1].set_xlabel('Time (years)')
-axs[1, 1].set_ylabel('Fraction Remaining')
-axs[1, 1].set_title('Plot 4')
-axs[1, 1].tick_params(axis='x', labelsize='x-small')
-axs[1, 1].tick_params(axis='y', labelsize='x-small')
-axs[1, 1].legend(loc='upper right', prop={'size': 'x-small'})
+axs[1, 1].plot(x3, y31, c='r', linestyle='--', label='C-14')
+axs[1, 1].plot(x3, y32, c='g', label='Ra-226')
+axs[1, 1].set_xlim(left=0, right=20000)
+axs[1, 1].set_ylim(bottom=0, top=1)
+axs[1, 1].set_title("Exponential Decay of Radioactive Elements")
+axs[1, 1].legend()
 
-axs[2, 0].hist(student_grades, bins=np.arange(0, 110, 10), edgecolor='black')
+axs[2, 0].hist(student_grades, bins=10, range=(0, 100), edgecolor='black')
 axs[2, 0].set_xlabel('Grades')
 axs[2, 0].set_ylabel('Number of Students')
-axs[2, 0].set_title('Plot 5')
-axs[2, 0].tick_params(axis='x', labelsize='x-small')
-axs[2, 0].tick_params(axis='y', labelsize='x-small')
+axs[2, 0].set_title('Project A')
+axs[2, 0].set_xlim(0, 100)
+axs[2, 0].set_ylim(0, 30)
 
+# make the plot axs[2, 0] take up two columns
 axs[2, 1].axis('off')
 
-fig.suptitle('All in One', fontsize='x-small')
-plt.tight_layout()
+fig.tight_layout()
+
+# set plot titles to have font siz of x-small
+for ax in axs.flat:
+    ax.set(xlabel='x-label', ylabel='y-label')
+    ax.label_outer()
+    
+fig.suptitle('All in One')
+fig.subplots_adjust(top=0.95)
+
+
 plt.show()

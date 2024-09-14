@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -9,13 +10,13 @@ t2 = 1600
 y1 = np.exp((r / t1) * x)
 y2 = np.exp((r / t2) * x)
 
-plt.plot(x, y1, color='r', linestyle='--', label='C-14')
-plt.plot(x, y2, color='g', label='Ra-226')
-plt.yscale('linear')
+plt.title("Exponential Decay of Radioactive Elements")
+plt.plot(x, y1, c='r', linestyle='--', label='C-14')
+plt.plot(x, y2, c='g', label='Ra-226')
+plt.xlim(left=0, right=20000)
+plt.ylim(bottom=0, top=1)
 plt.xlabel('Time (years)')
 plt.ylabel('Fraction Remaining')
-plt.title('Exponential Decay of Radioactive Elements')
-plt.xlim(0, 20000)
-plt.ylim(0, 1)
-plt.legend(loc='upper right')
+# add legend
+plt.legend()
 plt.show()

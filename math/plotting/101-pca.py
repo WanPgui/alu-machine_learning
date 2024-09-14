@@ -14,13 +14,8 @@ pca_data = np.matmul(norm_data, Vh[:3].T)
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-
-scatter = ax.scatter(pca_data[:, 0], pca_data[:, 1], pca_data[:, 2], c=labels, cmap='plasma')
-
+ax.scatter(pca_data[:, 0], pca_data[:, 1], pca_data[:, 2], c=labels, cmap='plasma')
 ax.set_xlabel('U1')
 ax.set_ylabel('U2')
 ax.set_zlabel('U3')
-ax.set_title('PCA of Iris Dataset')
-
-plt.colorbar(scatter, label='Species')
-plt.show()
+plt.title('PCA of Iris Dataset')
