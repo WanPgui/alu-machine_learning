@@ -2,8 +2,6 @@
 """Function that calculates the definiteness of a matrix"""
 
 import numpy as np
-
-
 def definiteness(matrix):
     """Function that calculates the definiteness of a matrix"""
     if type(matrix) is not np.ndarray:
@@ -26,5 +24,4 @@ def definiteness(matrix):
         return "Positive semi-definite"
     else:
         return 'Indefinite'
-    
     
