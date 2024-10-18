@@ -1,24 +1,22 @@
-# Correcting the provided Python script to remove whitespace issues and add a newline at the end.
-
-multinormal_code = """#!/usr/bin/env python3
-\"\"\"
+#!/usr/bin/env python3
+"""
 Creates the MultiNormal class
-\"\"\"
+"""
 import numpy as np
 
 
 class MultiNormal:
-    \"\"\"
+    """
     Represents a Multivariate Normal distribution
-    \"\"\"
+    """
 
     def __init__(self, data):
-        \"\"\"
+        """
         class constructor
         :param data: numpy.ndarray of shape (d, n) containing the data set:
             n is the number of data points
             d is the number of dimensions in each data point
-        \"\"\"
+        """
         if type(data) != np.ndarray:
             raise TypeError("data must be a 2D numpy.ndarray")
         if len(data.shape) != 2:
@@ -32,13 +30,13 @@ class MultiNormal:
         self.cov = (X_mean @ X_mean.T) / (n - 1)
 
     def pdf(self, x):
-        \"\"\"
+        """
         calculates the PDF
         :param x: numpy.ndarray of shape (d, 1) containing the data point whose
         PDF should be calculated
             d is the number of dimensions of the Multinomial instance
         :return: the value of the PDF
-        \"\"\"
+        """
         if type(x) is not np.ndarray:
             raise TypeError("x must be a numpy.ndarray")
         d = self.cov.shape[0]
@@ -53,12 +51,3 @@ class MultiNormal:
         pdf = first * np.exp(third)
 
         return pdf[0][0]
-
-"""
-
-
-# Save the corrected code to a file
-with open('/mnt/data/multinormal.py', 'w') as f:
-    f.write(multinormal_code.strip() + '\n')  # Ensure there's a newline at the end.
-
-'/mnt/data/multinormal.py'
