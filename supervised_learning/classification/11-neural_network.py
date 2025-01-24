@@ -89,4 +89,3 @@ class NeuralNetwork:
         loss = - (Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
         cost = np.mean(loss)
         return cost
-    
