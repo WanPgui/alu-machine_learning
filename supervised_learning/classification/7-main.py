@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 import numpy as np
 
 Neuron = __import__('7-neuron').Neuron
