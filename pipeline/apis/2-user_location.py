@@ -6,6 +6,7 @@ import requests
 import sys
 import time
 
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python 2-user_location.py <url>")
@@ -25,6 +26,6 @@ if __name__ == "__main__":
     elif res.status_code == 200:
         res = res.json()
         if 'loc' in res:
-            print(f"Location (Lat, Long): {res['loc']}")
+            print(res['loc'])
         else:
             print("Location info not found in response.")
