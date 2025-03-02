@@ -25,20 +25,20 @@ if __name__ == "__main__":
     elif res.status_code == 200:
         res = res.json()
 
-        # Print the full response
-        print(f"Full Response: {res}")
+        # Print the full response using .format() instead of f-string
+        print("Full Response: {}".format(res))
 
         # Check if the 'location' field exists and print it
         if 'location' in res:
-            print(f"Location: {res['location']}")
+            print("Location: {}".format(res['location']))
 
         # If 'location' is not found, try combining city, region, and country
         elif 'city' in res and 'region' in res and 'country' in res:
-            print(f"Location: {res['city']}")  # Now printing just the city (e.g., Tilburg)
+            print("Location: {}".format(res['city']))  # Now printing just the city (e.g., Tilburg)
 
         # If 'loc' (latitude, longitude) is found, print it
         elif 'loc' in res:
-            print(f"Location (Lat, Long): {res['loc']}")
+            print("Location (Lat, Long): {}".format(res['loc']))
 
         else:
             print("Location info not found in response.")
