@@ -25,8 +25,7 @@ if __name__ == "__main__":
 
     elif res.status_code == 200:
         res = res.json()
-        print(f"IP: {res.get('ip')}")
-        print(f"City: {res.get('city')}")
-        print(f"Region: {res.get('region')}")
-        print(f"Country: {res.get('country')}")
-        print(f"Location (Lat, Long): {res.get('loc')}")
+        if 'loc' in res:
+            print(res['loc'])
+        else:
+            print("Location info not found in response.")
