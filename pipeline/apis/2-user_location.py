@@ -24,9 +24,12 @@ if __name__ == "__main__":
 
     elif res.status_code == 200:
         res = res.json()
-        print("Full Response:", res)  # For debugging, showing full response
+        print("Full Response:", res) 
+        
         
         if 'location' in res:
             print("Location:", res['location'])
+        elif 'loc' in res:
+            print("Location (Lat, Long):", res['loc'])
         else:
             print("Location info not found in response.")
