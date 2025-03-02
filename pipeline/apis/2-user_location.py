@@ -26,7 +26,8 @@ if __name__ == "__main__":
         res = res.json()
 
         # Print the full response
-        print("Full Response: {}".format(res))
+        print("Full Response:", end=" ")
+        print(res)
 
         # Check if the 'location' field exists and print it
         if 'location' in res:
