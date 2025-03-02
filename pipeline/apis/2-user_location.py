@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     elif res.status_code == 200:
         res = res.json()
-        
+
         # Print the full response
         print("Full Response: {}".format(res))
 
@@ -39,6 +39,6 @@ if __name__ == "__main__":
         # If 'loc' (latitude, longitude) is found, print it
         elif 'loc' in res:
             print("Location (Lat, Long): {}".format(res['loc']))
-        
+
         else:
             print("Location info not found in response.")
