@@ -62,4 +62,4 @@ class BidirectionalCell:
         h_x = np.concatenate((h_prev, x_t), axis=1)
         h_next = np.tanh(np.matmul(h_x, self.Whf) + self.bhf)
 
-        return h_next
+        return h_nex
